@@ -2,3 +2,10 @@ data/*
 data
 .env
 **/data/*
+public/images/*
+public/images
+static/images
+**/*.gz
+CertBurp
+SiteMapInstagram
+targets.txt

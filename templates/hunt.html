@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Hunt</h1>
+    <title>Hunt</title>
+    {% if target != null %}
+        <h2>Target: {{ target }}</h2>
+    {% endif %}
+    {% if following != null and following.items()[-1] != "" and following[-1] != {} %}
+    <!-- {% print(following.items()) %} -->
+        <h2>Following</h2>
+        <div class="row">
+            {% for target, users in following.items() %}
+            {% if not users %}
+                <h2 style="color: crimson">No New Following</h2>
+            {% endif %}
+                {% for user, value in users.items() %}
+                {%if value[0] != "" or user != {} or users != {} %}
+                    <div class="col-sm-3">
+                        <div class="card" style="width: auto; height: auto;">
+                            
+                            <img class="profile-picture" src="{{ url_for('static', filename='images/' + user + '.jpg') }}" alt="profile_picture">
+                            <a href="{{ 'https://instagram.com/' + user }}" target="_blank">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ value[0] }}</h5>
+                                    {% if value[-2] == True %}
+                                        <h5 style="color: crimson;">Private</h5>
+                                    {% else %}
+                                        <h5 style="color: green;">Public</h5>
+                                    {% endif %}
+                                </div>
+                                </a>
+
+                                <form action="{{ url_for('addTarget') }}" method="POST">
+                                    <button type="submit" name="target" value="{{ user }}" style="border-color: crimson">+</button>
+                                </form>
+                        </div>
+                    </div>
+                    {%endif%}
+                {% endfor %}
+            {% endfor %}
+       </div>
+    {% endif %}
+{% endblock %}
+
+<style>
+    img{
+        width: 150px;
+        height: 150px;
+    }
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+    }
+</style>
