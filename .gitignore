@@ -7,5 +7,6 @@ public/images
 static/images
 **/*.gz
 CertBurp
-SiteMapInstagram
+./SiteMapInstagram
 targets.txt
+*/SiteMapInstagram
