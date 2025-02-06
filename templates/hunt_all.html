@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>All Following</h1>
+<div class="container">
+    {% for user, following in all_following.items() %}
+    <h2>{{ user }}</h2>
+    <div class="row">
+        {% for follow in following.newUsers %}
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ follow }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

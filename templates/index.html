@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="home" style="display: flex; flex-direction: row; justify-content: flex-start; margin: 1%; ">
+  
+    <div class="targets" style="display: flex; flex-direction: column;width: 40%; ">
+        <h1 style="margin: 1%; margin-left: 5%; margin-bottom: 5%; ">Targets</h1>
+       
+        <ul style=" width: 80%; margin-left: 5%; border-radius: 10%; border-bottom: 2%; border: 1px; border-color: black;">
+            {% for target in targets %}
+            <div  style="display: flex; flex-direction: row; justify-content: space-between; margin: 1%; ">
+            <img height="48px" width="48px" class="target" src="{{ url_for('static', filename='images/' + target.strip() + '.jpg') }}"> 
+            <form action="{{ url_for('huntSingleTarget', target=target) }}" method="POST" style="align-items:baseline; display: inline; flex-direction: row;  margin: 1%; ">
+            <div class="target">
+                <button type="submit" name="target" value="{{target}}" style="border-color: bisque;">{{ target }}</button>
+            </div>
+            </form>
+            <form action="{{ url_for('deleteTarget', target=target) }}" method="POST" style="display: flex; flex-direction: row; justify-items: space-between;  margin: 1%; ">
+              <button style="background: none; border: none" type="submit" name="target" class="target" href="{{ url_for('deleteTarget', target=target) }}">
+                <img height="20px" width="20px" class="trashcan" src="{{ url_for('static', filename='trash-solid.svg') }}" alt="Delete Icon">  
+              </button>
+              </form>
+            </div>
+            {% endfor %}
+        </ul>
+
+    </div>
+    <div class="addTarget" style="align-items: end; position: fixed; top:auto; right: 35%; display: top; margin-top: 5%; margin-left: 5%; "> 
+        <nav class="navbar navbar-light" style="width: fit-content;">
+            <form class="form-inline" action="{{url_for('addTarget')}}" method="post">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span style="border-color: bisque;" class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input name="target" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+            <button type="submit" class="btn btn-success">Add</button>
+            </form>
+          </nav>
+          
+    </div>
+    <div class="huntAll" style="display: center; flex-direction: row; justify-content: space-between; margin-top: 25%; ">
+      <button onclick="refreshData()" style="color: crimson;background: none; border: none; width: fit-content; ">
+        <i class="fas fa-sync-alt fa-3x" ></i><h4 >Hunt all</h4>
+      </button>
+      </div>
+    
+</div>
+</div>
+<script>
+function refreshData() {
+    window.location.href = "/hunt/all";
+}
+</script>
+{% endblock %}
