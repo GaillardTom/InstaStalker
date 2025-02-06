@@ -1,4 +1,4 @@
-# Instagram Stalker for myself 
+# Instagram Stalker
 
 ## What is this ? 
 
@@ -14,8 +14,23 @@ that we did not see during the previous scan.
 
 ## Usage: 
 
-[input] "targets.txt" contains 1 username for target with each line
+#### [input]
 
-[How To use it ?] get cookies from burpsuite and put them in the .env file,  the targets also have to be public for this to work
+"targets.txt" contains 1 username for target with each line
 
-[Output] "data/{name}_{curr_date}" with every following that the user has 
+#### [How To use it ?] 
+
+1. get cookies from burpsuite and put them in the .env file,  the targets also have to be public for this to work
+
+2. Have a mongoDB instance ready to store the result
+
+3. Start the app and connect to it on localhost
+
+4. Add a target and click on it to start a scan and add all the following in the DB 
+
+5. You can then rescan the target to see if he followed anybody since the last scan
+
+
+#### [Output]
+
+All the newly following of a given target inside a nice a little page. 
