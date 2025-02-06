@@ -8,5 +8,5 @@ static/images
 **/*.gz
 CertBurp
 ./SiteMapInstagram
-targets.txt
+./targets.txt
 */SiteMapInstagram
