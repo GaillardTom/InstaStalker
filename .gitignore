@@ -12,3 +12,5 @@ CertBurp
 targets.txt
 */targets.txt
 */SiteMapInstagram
+**/venv
+**/venv/*

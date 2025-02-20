@@ -65,6 +65,11 @@ def convert_object_ids_to_strings(data):
 
 
 def readTargets():
+    #Check if the file exists
+    if not os.path.exists("targets.txt"):
+        with open("targets.txt", "w") as file:
+            file.write("")
+            return []
     file = open('targets.txt', 'r')
     targets = file.readlines()
     return targets
@@ -385,6 +390,11 @@ def huntAll():
 @app.route("/addTarget", methods=["POST"])
 def addTarget():
     target = request.form["target"].strip()
+    #check if the targets.txt file exist
+    if not os.path.exists("targets.txt"):
+        with open("targets.txt", "w") as file:
+            file.write(target + "\n")
+        return redirect(url_for("home"))
     check = checkExistingUser(target)
     if check == False:
         print("User does not exist")
