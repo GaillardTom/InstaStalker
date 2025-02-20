@@ -11,26 +11,34 @@ that we did not see during the previous scan.
 - Loading state after starting scan
 - Make a cool huntall page so we can just hunt everyone instead of 1 by 1 
 
+## How To use it ? 
 
-## Usage: 
+1. **Get cookies from an instagram account on burpsuite and put them in the .env file like so:** 
+- burp0_cookies='{"cookie_name": "cookie_value"}'
+- burp0_headers='{"header_name": "header_value"}'
+- burp0_data='{"data_key": "data_value"}'
 
-#### [input]
+2. **Have a mongoDB instance ready to store the result and store the connection string in the .env**
+- CONNECTION_STRING='your_mongodb_connection_string'
 
-"targets.txt" contains 1 username for target with each line
+3. **Install the required dependencies:**
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-#### [How To use it ?] 
+3. **Start the app and connect to it on localhost:5000**
+    ```sh
+    python main.py
+    ```
+4. **Add a target and click on it to start a scan and add all the following in the DB**
 
-1. get cookies from burpsuite and put them in the .env file,  the targets also have to be public for this to work
+5. **You can then rescan the target to see if he followed anybody since the last scan**
 
-2. Have a mongoDB instance ready to store the result
+## Interface
+![example UI](./readme_images/ExampleUI.PNG)
+![example Hunt](./readme_images/HuntExample.PNG)
+## Notes
 
-3. Start the app and connect to it on localhost
-
-4. Add a target and click on it to start a scan and add all the following in the DB 
-
-5. You can then rescan the target to see if he followed anybody since the last scan
-
-
-#### [Output]
-
-All the newly following of a given target inside a nice a little page. 
+- Ensure that the MongoDB instance is running and accessible.
+- The targets must be public profiles or followed by the account whose cookies are used.
+- Handle the environment variables securely and do not expose them publicly.
