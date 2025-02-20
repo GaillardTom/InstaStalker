@@ -28,6 +28,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
+      env: 
+        burp0_headers: ${{ secrets.BURP0_HEADERS }}
+        burp0_cookies: ${{ secrets.BURP0_COOKIES }}
+        burp0_data: ${{ secrets.BURP0_DATA }}
+        CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
       run: |
         echo "Running test" 
         python -m unittest test_main.py
