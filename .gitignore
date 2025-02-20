@@ -14,3 +14,4 @@ targets.txt
 */SiteMapInstagram
 **/venv
 **/venv/*
+**/__pycache__
