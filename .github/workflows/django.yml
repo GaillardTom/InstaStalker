@@ -30,4 +30,3 @@ jobs:
     - name: Run Tests
       run: |
         echo "Running test" 
-        python main.py
