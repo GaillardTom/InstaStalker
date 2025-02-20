@@ -30,3 +30,4 @@ jobs:
     - name: Run Tests
       run: |
         echo "Running test" 
+        python -m unittest test_main.py
