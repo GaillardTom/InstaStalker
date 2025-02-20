@@ -42,12 +42,13 @@
           </nav>
           
     </div>
+    {% if targets|length > 1 %}
     <div class="huntAll" style="display: center; flex-direction: row; justify-content: space-between; margin-top: 25%; ">
       <button onclick="refreshData()" style="color: crimson;background: none; border: none; width: fit-content; ">
         <i class="fas fa-sync-alt fa-3x" ></i><h4 >Hunt all</h4>
       </button>
       </div>
-    
+    {% endif %}
 </div>
 </div>
 <script>
